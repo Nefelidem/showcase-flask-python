@@ -4,7 +4,6 @@ import request_verification_api as a
 from dotenv import load_dotenv
 import os
 import requests
-import time
 from flask import Flask
 from flask_caching import Cache
 import secrets
@@ -69,6 +68,15 @@ def retrieve_results():
     print(details_response['platform'])
     # ['id']['status']['platform']['startTime']['documentData']['dateOfBirth']
     return details_response
+
+#
+# @app.route('/test')
+# def response_2():
+#     response_2 = retrieve_results()
+#     print(response_2)
+#     return response_2
+#
+#
 
 
 if __name__ == "__main__":
