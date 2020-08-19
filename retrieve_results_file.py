@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, session
+from flask import render_template, redirect, session
 from flask import request
 import request_verification_api as a
 from dotenv import load_dotenv
@@ -7,10 +7,22 @@ import requests
 from flask import Flask
 from flask_caching import Cache
 import secrets
+from flask_session import Session
+from jinja2 import Template
+
+
+# from flask.ext.session import Session
+
 
 load_dotenv(dotenv_path='./credentials.env')
 
 app = Flask(__name__)
+
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+app.config.from_object(__name__)
+Session(app)
+
 
 # session login to store temporarily the access code for results retrieval
 secret = secrets.token_urlsafe(32)
@@ -44,7 +56,6 @@ def verification_page():
     string_request = str(request_value)
     print('url with access code', string_request)
     if string_code in string_request:
-        print(code)
         session['code'] = string_code
         session['code'] = session.get('code')
         for key, value in session.items():
@@ -65,18 +76,37 @@ def retrieve_results():
     auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
     response = requests.request('GET', results_url, auth=auth)
     details_response = response.json()
-    print(details_response['platform'])
-    # ['id']['status']['platform']['startTime']['documentData']['dateOfBirth']
-    return details_response
+    if 'errorCode' not in details_response:
+        session['response'] = details_response
+        session['response'] = session.get('response')
+        for key, value in session.items():
+            print('{} => {}'.format(key, value))
+    else:
+        print('Please try again')
+    #
+    # print(details_response['id'])
+    # print(details_response['status'])
+    # print(details_response['platform'])
+    # print(details_response['startTime'])
+
+    platform = details_response['platform']
+    status = details_response['status']
+    id_num = details_response['id']
+    start_time = details_response['startTime']
+    doc_type = details_response['documentData']['documentType']
+    doc_number = details_response['documentData']['documentNumber']
+    country = details_response['documentData']['issuingCountry']
+    first_name = details_response['documentData']['firstName']
+    last_name = details_response['documentData']['lastName']
+    given_name = details_response['documentData']['givenNames']
+    surname = details_response['documentData']['surname']
+    dateofbirth = details_response['documentData']['dateOfBirth']
+
 
 #
-# @app.route('/test')
-# def response_2():
-#     response_2 = retrieve_results()
-#     print(response_2)
-#     return response_2
-#
-#
+    return render_template("jinja_template.html", plat=platform, stat=status, id=id_num, starttime=start_time,
+                           doctype=doc_type, docnumber=doc_number, issueCountry=country, name=first_name,
+                           lastname=last_name, given_name=given_name, Surname=surname, bday=dateofbirth)
 
 
 if __name__ == "__main__":
