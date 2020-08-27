@@ -8,6 +8,7 @@ It's implemented with Flask and jinja2 for the details page.
 
 
 ## Running project
+python version 3.7 or higher is required
 
 To run the project install first the following packages
 ```
