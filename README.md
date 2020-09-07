@@ -29,11 +29,24 @@ set CLIENT_SECRET=<your client secret>
 
 You can find these values in the [Customer Dashboard](https://customer-dashboard.app.authenteq.com/customer/api-keys).
 
-To run this application from command line:
-Navigate to the project folder and type 
+To run this application using Flask set the following environmental variables:
+Linux
 ```
- python retrieve_results_file.py
+export FLASK_APP=app.py 
+export FLASK_ENV=development
 ```
+
+Windows
+```
+set FLASK_APP=app.py 
+set FLASK_ENV=development
+```
+
+Run:
+```
+flask run
+```
+
 
 The frontend starts on port 5000 on the localhost.
 

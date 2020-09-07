@@ -16,6 +16,7 @@ from jinja2 import Template
 # load_dotenv(dotenv_path='./credentials.env')
 
 app = Flask(__name__)
+# app.config.from_envvar('APP_SETTINGS')
 app.config['CLIENT_ID'] = os.environ.get('CLIENT_ID')
 app.config['CLIENT_SECRET'] = os.environ.get('CLIENT_SECRET')
 
