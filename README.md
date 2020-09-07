@@ -10,16 +10,7 @@ It's implemented with Flask and jinja2 for the details page.
 ## Running project
 python version 3.7 or higher is required
 
-To run the project install first the following packages
-```
-Flask   
-requests
-python-dotenv 
-flask_caching
-secrets
-flask_session
-jinja2
-```
+
 The current project is implemented with python version 3.8
 
 Create .env file with two variables:

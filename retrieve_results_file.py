@@ -10,7 +10,6 @@ import secrets
 from flask_session import Session
 from jinja2 import Template
 
-
 # from flask.ext.session import Session
 
 
@@ -20,13 +19,10 @@ app = Flask(__name__)
 app.config['CLIENT_ID'] = os.environ.get('CLIENT_ID')
 app.config['CLIENT_SECRET'] = os.environ.get('CLIENT_SECRET')
 
-
-
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config.from_object(__name__)
 Session(app)
-
 
 # session login to store temporarily the access code for results retrieval
 secret = secrets.token_urlsafe(32)
@@ -88,11 +84,9 @@ def retrieve_results():
     else:
         print('Please try again')
 
-
-
-    return render_template("jinja_template.html", plat=platform, stat=status, id=id_num, starttime=start_time,
+    return render_template("table_template.html", platform=platform, status=status, id=id_num, starttime=start_time,
                            doctype=doc_type, docnumber=doc_number, issueCountry=country, name=first_name,
-                           lastname=last_name, given_name=given_name, Surname=surname, bday=dateofbirth)
+                           lastname=last_name, given_name=given_name, Surname=surname, birthday=dateofbirth)
 
 
 if __name__ == "__main__":
