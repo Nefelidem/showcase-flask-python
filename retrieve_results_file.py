@@ -89,20 +89,6 @@ def retrieve_results():
         print('Please try again')
 
 
-    platform = details_response['platform']
-    status = details_response['status']
-    id_num = details_response['id']
-    start_time = details_response['startTime']
-    doc_type = details_response['documentData']['documentType']
-    doc_number = details_response['documentData']['documentNumber']
-    country = details_response['documentData']['issuingCountry']
-    first_name = details_response['documentData']['firstName']
-    last_name = details_response['documentData']['lastName']
-    given_name = details_response['documentData']['givenNames']
-    surname = details_response['documentData']['surname']
-    dateofbirth = details_response['documentData']['dateOfBirth']
-
-
 
     return render_template("jinja_template.html", plat=platform, stat=status, id=id_num, starttime=start_time,
                            doctype=doc_type, docnumber=doc_number, issueCountry=country, name=first_name,
