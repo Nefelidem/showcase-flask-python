@@ -1,0 +1,6 @@
+Flask
+requests
+flask_caching
+secrets
+flask_session
+jinja2
