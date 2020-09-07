@@ -21,7 +21,6 @@ def request_verification():
     auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
     response = requests.request('GET', request_verification_url, auth=auth)
     x = response.json()
-    print(list(x.items())[0][1])
     return list(x.items())[0][1]
 
 

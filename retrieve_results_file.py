@@ -14,9 +14,13 @@ from jinja2 import Template
 # from flask.ext.session import Session
 
 
-load_dotenv(dotenv_path='./credentials.env')
+# load_dotenv(dotenv_path='./credentials.env')
 
 app = Flask(__name__)
+app.config['CLIENT_ID'] = os.environ.get('CLIENT_ID')
+app.config['CLIENT_SECRET'] = os.environ.get('CLIENT_SECRET')
+
+
 
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -31,8 +35,8 @@ app.secret_key = secret
 REDIRECT_URL = 'http://127.0.0.1:5000/results'
 
 # Credentials from admin dashboard stored in environmental variable
-CLIENT_ID = os.environ.get('CLIENT_ID')
-CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
+CLIENT_ID = app.config['CLIENT_ID']
+CLIENT_SECRET = app.config['CLIENT_SECRET']
 
 request_verification_url = "https://api.app.authenteq.com/web-idv/verification-url?redirectUrl={}".format(REDIRECT_URL)
 nd_redirect_url = 'http://127.0.0.1:5000/details'
@@ -83,11 +87,7 @@ def retrieve_results():
             print('{} => {}'.format(key, value))
     else:
         print('Please try again')
-    #
-    # print(details_response['id'])
-    # print(details_response['status'])
-    # print(details_response['platform'])
-    # print(details_response['startTime'])
+
 
     platform = details_response['platform']
     status = details_response['status']
@@ -103,7 +103,7 @@ def retrieve_results():
     dateofbirth = details_response['documentData']['dateOfBirth']
 
 
-#
+
     return render_template("jinja_template.html", plat=platform, stat=status, id=id_num, starttime=start_time,
                            doctype=doc_type, docnumber=doc_number, issueCountry=country, name=first_name,
                            lastname=last_name, given_name=given_name, Surname=surname, bday=dateofbirth)
