@@ -13,10 +13,18 @@ python version 3.7 or higher is required
 
 The current project is implemented with python version 3.8
 
-Create .env file with two variables:
+###Flask configuration from environment variables
+##### Use environment variables directly in your code.
+
+Linux
 ```
-CLIENT_ID=o7...My
-CLIENT_SECRET=1D...M5
+export CLIENT_ID=<your client id>
+export CLIENT_SECRET=<your client secret>
+```
+Windows
+```
+set CLIENT_ID=<your client id>
+set CLIENT_SECRET=<your client secret>
 ```
 
 You can find these values in the [Customer Dashboard](https://customer-dashboard.app.authenteq.com/customer/api-keys).
