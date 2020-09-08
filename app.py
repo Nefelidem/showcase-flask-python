@@ -47,7 +47,6 @@ def start():
     return render_template('index.html')
 
 
-@cache.cached(timeout=50)
 @app.route('/results', methods=["GET"])
 def verification_page():
     value = a.request_verification()
