@@ -9,192 +9,100 @@
     <link rel="apple-touch-icon" href="/logo192.png">
 
     <link rel="manifest" href="/manifest.json">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<!--    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">-->
 
+        <style>
+            @import url("style.css");
+        </style>
 
     <title>Showcase app</title>
-      <style type="text/css">body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+        <style>
+            @import url("header_style.css");
+        </style>
 
-    code {
-      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
-    }
-    </style><style type="text/css">body {
-      background-color: #fbfbfb; }
+        <style type="text/css">.Start-description {
+          font-family: 'Roboto', sans-serif;
+          font-size: 24px;
+          text-align: center;
+          width: 600px;
+          margin: 200px auto 50px;
+          color: #737373; }
+        </style>
 
-    .App-header {
-      background-color: #2e98f2;
-      height: 60px;
-      text-align: center;
-      font-family: Roboto, sans-serif;
-      font-size: 30px;
-      font-weight: 600;
-      padding-top: 10px;
-      box-sizing: border-box;
-      color: white;
-      box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.5); }
-    </style><style type="text/css">.Start-description {
-      font-family: 'Roboto', sans-serif;
-      font-size: 24px;
-      text-align: center;
-      width: 600px;
-      margin: 200px auto 50px;
-      color: #737373; }
+    </head>
+<!--    <style>-->
+<!--    <link rel="stylesheet" href="button_stylesheet.css">-->
+<!--    </style>-->
+
+    <style>
+
     </style>
 
 
-    <style type="text/css">.AQButton,
-    .AQButton:hover,
-    .AQButton:active {
-      margin: 0 auto;
-      display: block;
-      position: relative;
-      height: 48.59px;
-      width: 295px;
-      border-radius: 28px;
-      background-color: #F29E2E;
-      box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.2);
-      color: #FFFFFF;
-      font-family: Roboto;
-      font-size: 15px;
-      line-height: 18px;
-      text-align: center;
-      cursor: pointer; }
+    <body data-gr-c-s-loaded="true">
 
-    .AQButton-logo {
-      display: block;
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      top: 9px;
-      left: 16px; }
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root">
+            <div class="App">
+                <header class="App-header">Web IDV Showcase App</header>
+                <div class="App-body">
+            <div class="Start">
 
-    .AQButton-caption {
-      position: absolute;
-      top: 9px;
-      left: 62px;
-      height: 30px;
-      width: 224px;
-      color: #FFFFFF;
-      font-family: Roboto;
-      font-size: 15px;
-      line-height: 30px;
-      font-weight: 400;
-      text-align: center;
-      border-left: 1px solid #FFFFFF; }
-    </style>
+                <div class="Start-description">This demo site allows you to experience the end-to-end flow of Authenteq’s Web Identity Verification.</div><a class="AQButton" href="/results"><img class="AQButton-logo" src="data:image/png;base64,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" alt="Authenteq Logo">
+            <div class="AQButton-caption">Verify with Authenteq Web IDV</div>
 
-        <style type="text/css">.Results-header {
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 26px;
-      line-height: 22px;
-      padding: 30px 30px 20px;
-      margin: 0;
-      border-bottom: 1px solid #EBEBEB; }
+                <style type="text/css">.AQButton,
+                .AQButton:hover,
+                .AQButton:active {
+                  margin: 0 auto;
+                  display: block;
+                  position: relative;
+                  height: 48.59px;
+                  width: 295px;
+                  border-radius: 28px;
+                  background-color: #F29E2E;
+                  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.2);
+                  color: #FFFFFF;
+                  font-family: Roboto;
+                  font-size: 15px;
+                  line-height: 18px;
+                  text-align: center;
+                  cursor: pointer; }
 
-    .Results-panel {
-      margin: 50px auto 0;
-      width: 400px;
-      min-height: 500px;
-      background-color: white;
-      border-radius: 3px;
-      box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.1); }
+                .AQButton-logo {
+                  display: block;
+                  width: 30px;
+                  height: 30px;
+                  position: absolute;
+                  top: 9px;
+                  left: 16px; }
 
-    .Results-documents {
-      padding: 20px 30px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center; }
-
-    .Results-imageContainer {
-      margin-left: 20px; }
-
-    .Results-imageContainer:first-child {
-      margin-left: 0; }
-
-    .Results-image {
-      flex-shrink: 1;
-      width: 100%; }
-
-    .Results-buttonContainer {
-      border-top: 1px solid #EBEBEB;
-      padding: 20px 30px; }
-
-    .Results-button,
-    .Results-button:hover,
-    .Results-button:focus {
-      display: block;
-      padding: 15px 0;
-      background: #F29E2E;
-      border-radius: 8px;
-      font-family: Roboto, sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 16px;
-      line-height: 22px;
-      text-decoration: none;
-      text-align: center;
-      color: #FFFFFF;
-      box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.3); }
-
-    .Results .Details {
-      margin: 0 30px 20px; }
-    </style>
-        <style type="text/css">.Details {
-      padding: 0;
-      margin: 0;
-      list-style: none; }
-
-    .Details-property {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-      padding: 6px 0;
-      border-bottom: 1px solid #ebebeb; }
-
-    .Details-property:last-child {
-      border-bottom: none; }
-
-    .Details-name,
-    .Details-value {
-      font-family: Roboto, sans-serif;
-      font-style: normal;
-      font-size: 18px;
-      line-height: 21px;
-      color: #454A51; }
-
-    .Details-name {
-      font-weight: bold; }
-
-    .Details-value {
-      text-align: right; }
-    </style>
-        </head>
-<body data-gr-c-s-loaded="true">
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root">
-        <div class="App">
-            <header class="App-header">Web IDV Showcase App</header>
-            <div class="App-body">
-        <div class="Start">
-            <div class="Start-description">This demo site allows you to experience the end-to-end flow of Authenteq’s Web Identity Verification.</div><a class="AQButton" href="/results"><img class="AQButton-logo" src="data:image/png;base64,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" alt="Authenteq Logo">
-        <div class="AQButton-caption">Verify with Authenteq Web IDV</div></a></div></div></div></div>
+                .AQButton-caption {
+                  position: absolute;
+                  top: 9px;
+                  left: 62px;
+                  height: 30px;
+                  width: 224px;
+                  color: #FFFFFF;
+                  font-family: Roboto;
+                  font-size: 15px;
+                  line-height: 30px;
+                  font-weight: 400;
+                  text-align: center;
+                  border-left: 1px solid #FFFFFF; }
+                </style>
+<!--        <style>-->
+<!--            @import url("button.css");-->
+<!--        </style>-->
 
   <script src="/static/js/bundle.js"></script>
     <script src="/static/js/0.chunk.js"></script><script src="/static/js/main.chunk.js"></script>
 
-</body>
-<html lang="en">
-<head></head>
+
+    </body>
+    <html lang="en">
+    <head></head>
+
     <meta charset="utf-8">
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">

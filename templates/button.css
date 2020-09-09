@@ -1,0 +1,40 @@
+ <style type="text/css">.AQButton,
+    .AQButton:hover,
+    .AQButton:active {
+      margin: 0 auto;
+      display: block;
+      position: relative;
+      height: 48.59px;
+      width: 295px;
+      border-radius: 28px;
+      background-color: #F29E2E;
+      box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.2);
+      color: #FFFFFF;
+      font-family: Roboto;
+      font-size: 15px;
+      line-height: 18px;
+      text-align: center;
+      cursor: pointer; }
+
+    .AQButton-logo {
+      display: block;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 9px;
+      left: 16px; }
+
+    .AQButton-caption {
+      position: absolute;
+      top: 9px;
+      left: 62px;
+      height: 30px;
+      width: 224px;
+      color: #FFFFFF;
+      font-family: Roboto;
+      font-size: 15px;
+      line-height: 30px;
+      font-weight: 400;
+      text-align: center;
+      border-left: 1px solid #FFFFFF; }
+    </style>

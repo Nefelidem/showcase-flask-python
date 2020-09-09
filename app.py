@@ -54,7 +54,7 @@ def verification_page():
     string_code = str(code)
     request_value = request.get_data
     string_request = str(request_value)
-    print('url with access code', string_request)
+    # print('url with access code', string_request)
     if string_code in string_request:
         session['code'] = string_code
         session['code'] = session.get('code')
