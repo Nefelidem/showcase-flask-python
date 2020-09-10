@@ -38,7 +38,7 @@ export FLASK_ENV=development
 
 Windows
 ```
-set FLASK_APP=app.py 
+set FLASK_APP=Results_retrieval.py 
 set FLASK_ENV=development
 ```
 
