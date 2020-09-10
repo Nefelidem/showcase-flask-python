@@ -62,7 +62,7 @@ def verification_page():
         print(details_response)
         print(details_response['platform'])
         if 'errorCode' not in details_response:
-            return render_template("table_template.html", platform=details_response['platform'],
+            return render_template("results_table.html", platform=details_response['platform'],
                                    status=details_response['status'],
                                    id=details_response['id'],
                                    starttime=details_response['startTime'],
