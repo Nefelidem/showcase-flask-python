@@ -52,9 +52,9 @@ The frontend starts on port 5000 on the localhost.
 
 Open [https://localhost:5000](https://localhost:5000).
 
-The application contains three flask routes:
-* index  (/) - initiates the process,
-* results (/results) which calls the verification process in the home page
-* verification details  (/details) - displays the results from the verification process
+The application contains:
+* index  (/) - home page with Button which will initiate the verification process
+* results (/results) displays the results of the verification
+
 
 
