@@ -9,14 +9,10 @@ from flask_caching import Cache
 import secrets
 from flask_session import Session
 from jinja2 import Template
+import jinja2
 
-# from flask.ext.session import Session
-
-
-# load_dotenv(dotenv_path='./credentials.env')
 
 app = Flask(__name__)
-# app.config.from_envvar('APP_SETTINGS')
 app.config['CLIENT_ID'] = os.environ.get('CLIENT_ID')
 app.config['CLIENT_SECRET'] = os.environ.get('CLIENT_SECRET')
 
@@ -41,6 +37,12 @@ nd_redirect_url = 'http://127.0.0.1:5000/details'
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 
+def render_jinja_html(template_loc, file_name, **context):
+    return jinja2.Environment(
+        loader=jinja2.FileSystemLoader(template_loc + '/')
+    ).get_template(file_name).render(context)
+
+
 # home page
 @app.route('/')
 def start():
@@ -51,42 +53,31 @@ def start():
 def verification_page():
     value = a.request_verification()
     code = request.args.get('code')
-    string_code = str(code)
-    request_value = request.get_data
-    string_request = str(request_value)
-    # print('url with access code', string_request)
-    if string_code in string_request:
-        session['code'] = string_code
-        session['code'] = session.get('code')
-        for key, value in session.items():
-            print('{} => {}'.format(key, value))
-
     if code:
-        return redirect('/details')
+        results_url = ("https://api.app.authenteq.com/web-idv/verification-result?code={}".format(code) +
+                       "&redirectUrl={}".format(REDIRECT_URL))
+        auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
+        response = requests.request('GET', results_url, auth=auth)
+        details_response = response.json()
+        print(details_response)
+        print(details_response['platform'])
+        if 'errorCode' not in details_response:
+            return render_template("table_template.html", platform=details_response['platform'],
+                                   status=details_response['status'],
+                                   id=details_response['id'],
+                                   starttime=details_response['startTime'],
+                                   doctype=details_response['documentData']['documentType'],
+                                   docnumber=details_response['documentData']['documentNumber'],
+                                   issueCountry=details_response['documentData']['issuingCountry'],
+                                   name=details_response['documentData']['firstName'],
+                                   lastname=details_response['documentData']['lastName'],
+                                   given_name=details_response['documentData']['givenNames'],
+                                   Surname=details_response['documentData']['surname'],
+                                   birthday=details_response['documentData']['dateOfBirth'])
+        elif 'errorCode' in details_response:
+            print('details_response')
     else:
         return redirect(value)
-
-
-@app.route('/details', methods=["GET"])
-def retrieve_results():
-    for key, value in session.items():
-        print('{} => {}'.format(key, value))
-    results_url = ("https://api.app.authenteq.com/web-idv/verification-result?code={}".format(session['code']) +
-                   "&redirectUrl={}".format(REDIRECT_URL))
-    auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
-    response = requests.request('GET', results_url, auth=auth)
-    details_response = response.json()
-    if 'errorCode' not in details_response:
-        session['response'] = details_response
-        session['response'] = session.get('response')
-        for key, value in session.items():
-            print('{} => {}'.format(key, value))
-    else:
-        print('Please try again')
-
-    return render_template("table_template.html", platform=platform, status=status, id=id_num, starttime=start_time,
-                           doctype=doc_type, docnumber=doc_number, issueCountry=country, name=first_name,
-                           lastname=last_name, given_name=given_name, Surname=surname, birthday=dateofbirth)
 
 
 if __name__ == "__main__":
