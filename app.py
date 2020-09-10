@@ -11,7 +11,6 @@ from flask_session import Session
 from jinja2 import Template
 import jinja2
 
-
 app = Flask(__name__)
 app.config['CLIENT_ID'] = os.environ.get('CLIENT_ID')
 app.config['CLIENT_SECRET'] = os.environ.get('CLIENT_SECRET')
@@ -35,12 +34,6 @@ request_verification_url = "https://api.app.authenteq.com/web-idv/verification-u
 nd_redirect_url = 'http://127.0.0.1:5000/details'
 
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
-
-
-def render_jinja_html(template_loc, file_name, **context):
-    return jinja2.Environment(
-        loader=jinja2.FileSystemLoader(template_loc + '/')
-    ).get_template(file_name).render(context)
 
 
 # home page
