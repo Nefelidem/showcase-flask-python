@@ -32,13 +32,13 @@ You can find these values in the [Customer Dashboard](https://customer-dashboard
 To run this application using Flask set the following environmental variables:
 Linux
 ```
-export FLASK_APP=app.py 
+export FLASK_APP=main_application.py 
 export FLASK_ENV=development
 ```
 
 Windows
 ```
-set FLASK_APP=Results_retrieval.py 
+set FLASK_APP=main_application.py 
 set FLASK_ENV=development
 ```
 

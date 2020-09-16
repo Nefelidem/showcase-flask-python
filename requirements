@@ -1,6 +1,8 @@
-Flask
-requests
-flask_caching
-secrets
-flask_session
-jinja2
+Python 3.8 needed to run this application:
+https://www.python.org/downloads/
+
+Install the follow packages:
+
+pip install Flask
+pip install requests
+pip install Jinja2

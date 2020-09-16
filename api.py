@@ -1,10 +1,7 @@
-from flask import render_template, redirect, session
-from flask import request
+from flask import render_template, redirect, session, Flask, request
 import request_verification_api as a
 import os
 import requests
-from flask import Flask
-from flask_caching import Cache
 import secrets
 from jinja2 import Template
 import jinja2
