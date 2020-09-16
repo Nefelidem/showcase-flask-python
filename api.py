@@ -24,8 +24,6 @@ class AuthenteqApi:
             auth = requests.auth.HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET)
             response = requests.request('GET', results_url, auth=auth)
             details_response = response.json()
-            print(details_response)
-            print(details_response['platform'])
             if 'errorCode' not in details_response:
                 return render_template("results_table.html", platform=details_response['platform'],
                                        status=details_response['status'],
