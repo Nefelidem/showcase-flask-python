@@ -10,7 +10,9 @@ import jinja2
 class AuthenteqApi:
 
     def __init__(self):
-        pass
+        self.REDIRECT_URL = 'http://127.0.0.1:5000/results'
+        self.CLIENT_ID = os.environ.get('CLIENT_ID')
+        self.CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
 
     def verification_result(self):
         value = a.request_verification()
