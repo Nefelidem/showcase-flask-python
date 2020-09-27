@@ -1,7 +1,7 @@
 Python 3.8 needed to run this application:
 https://www.python.org/downloads/
 
-Install the follow packages:
+Install the following packages:
 
 pip install Flask
 pip install requests

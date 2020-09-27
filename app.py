@@ -39,7 +39,6 @@ class AuthenteqApi:
     def verification_result(self, client_id, client_secret, redirect_url):
         value = a.request_verification()
         code = request.args.get('code')
-        print(client_id, client_secret, redirect_url)
         if code:
             results_url = ("https://api.app.authenteq.com/web-idv/verification-result?code={}".format(code) +
                            "&redirectUrl={}".format(redirect_url))
