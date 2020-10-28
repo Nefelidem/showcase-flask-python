@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Demo of an integration of Authenteq Web IDV with application created with Python Flask"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Authenteq Web IDV - Python Flask Demo</title>
+  </head>
+  <body>
+    <div class="App">
+      <header class="App-header">Web IDV Showcase App</header>
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

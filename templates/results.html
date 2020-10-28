@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% macro detail(name, value) %}
+<li class="Details-property">
+  <div class="Details-name">{{name}}</div>
+  <div class="Details-value">{{value}}</div>
+</li>
+{% endmacro %}
+
+{% macro render_document(imageObject, alt) %}
+<div class="Results-imageContainer">
+  <div class="Results-imageContainer">
+    <img class="Results-image" src="{{ imageObject | data_url }}" alt="{{alt}}" />
+  </div>
+</div>
+{% endmacro %}
+
+{% block content %}
+<div class="Results">
+  <div class="Results-panel">
+    <h1 class="Results-header">Verification Results</h1>
+    <div class="Results-documents">
+      {% if document_data.givenNames %}
+        {{ render_document(document_data.croppedFrontImage, "Document Front") }}
+      {% endif %}
+      {% if document_data.givenNames %}
+        {{ render_document(document_data.croppedBackImage, "Document Back") }}
+      {% endif %}
+    </div>
+
+    <ul class="Details">
+      {% if document_data.givenNames %}
+        {{ detail('Given Names', document_data.givenNames) }}
+      {% endif %}
+      {% if document_data.surname %}
+        {{ detail('Surname', document_data.surname) }}
+      {% endif %}
+      {% if document_data.namePrefixes %}
+        {{ detail('Name Prefixes', document_data.namePrefixes) }}
+      {% endif %}
+      {% if document_data.nameSuffixes %}
+        {{ detail('Name Suffixes', document_data.nameSuffixes) }}
+      {% endif %}
+
+      {% if document_data.dateOfBirth %}
+        {{ detail('Date of Birth', document_data.dateOfBirth) }}
+      {% endif %}
+      {% if document_data.sex %}
+        {{ detail('Sex', document_data.sex | sex) }}
+      {% endif %}
+      {% if document_data.nationality %}
+        {{ detail('Nationality', document_data.nationality | conuntry) }}
+      {% endif %}
+
+      {% if document_data.documentType %}
+        {{ detail('Document Type', document_data.documentType | document_type) }}
+      {% endif %}
+      {% if document_data.documentNumber %}
+        {{ detail('Document Number', document_data.documentNumber) }}
+      {% endif %}
+      {% if document_data.issuingCountry %}
+        {{ detail('Issuing Country', document_data.issuingCountry | conuntry) }}
+      {% endif %}
+      {% if document_data.dateOfExpiry %}
+        {{ detail('Date of Expiry', document_data.dateOfExpiry) }}
+      {% endif %}
+      {% if document_data.dateOfIssue %}
+        {{ detail('Date of Issue', document_data.dateOfIssue) }}
+      {% endif %}
+    </ul>
+
+    <div class="Results-buttonContainer">
+      <a class="Results-button" href="/">Back to Start</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
