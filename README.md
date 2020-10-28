@@ -13,6 +13,7 @@ The current project is implemented with Python version 3.8
 ### Configuring Flask with environment variables
 
 To run this application using Flask set the following environmental variables:
+
 Linux
 ```
 export FLASK_APP=app.py
@@ -27,6 +28,7 @@ set FLASK_ENV=development
 
 ### Setting Client Id and Client Secret
 The app needs Client Id and Client Secret. You can find these values in the [Customer Dashboard](https://customer-dashboard.app.authenteq.com/customer/api-keys). Pass them to the app with the environment variables:
+
 Linux
 ```
 export CLIENT_ID=<your client id>
