@@ -71,7 +71,7 @@ def results():
             return render_template('error.html', message=message)
         return render_template("results.html", document_data=api_response['documentData'])
     else:
-        return render_template('error.html', message="The verification has been interrupted.")
+        return redirect('/')
 
 
 if __name__ == "__main__":
